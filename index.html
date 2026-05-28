@@ -10,9 +10,9 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #f5f5f0;
+    --bg: #f5f0e8;
     --surface: #ffffff;
-    --border: #e4e4dc;
+    --border: #e4e0d8;
     --text: #1a1a1a;
     --text-muted: #6b6b6b;
     --text-hint: #9b9b9b;
@@ -33,121 +33,132 @@
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    padding: 2rem 1rem 4rem;
   }
 
-  .container { max-width: 480px; margin: 0 auto; }
-
-  .header { text-align: center; margin-bottom: 2rem; }
-
-  .header-badge {
-    display: inline-block;
-    background: var(--green-light);
-    color: var(--green-deeper);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 12px;
+  /* NAV */
+  .topnav {
+    background: var(--navy);
+    padding: 1rem 1.5rem;
   }
+  .topnav h1 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .topnav p  { font-size: 13px; color: rgba(255,255,255,.55); }
 
-  .header h1 { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
-  .header p { font-size: 14px; color: var(--text-muted); }
-
-  .section-label {
-    font-size: 11px; font-weight: 600; letter-spacing: .06em;
-    text-transform: uppercase; color: var(--text-hint); margin-bottom: 10px;
-  }
+  .page { max-width: 560px; margin: 0 auto; padding: 2rem 1rem 4rem; }
 
   .card {
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1rem;
+    border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1rem;
   }
 
-  .input-row {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 12px; padding: 8px 0;
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
   }
-  .input-row + .input-row { border-top: 1px solid var(--border); }
-  .input-label { font-size: 14px; color: var(--text-muted); }
 
-  .num-input { display: flex; align-items: center; gap: 8px; }
+  /* SLIDER INPUT GROUP */
+  .field { margin-bottom: 1.25rem; }
+  .field:last-child { margin-bottom: 0; }
+  .field-label { font-size: 14px; color: var(--text-muted); margin-bottom: 8px; display: block; }
 
-  .num-btn {
-    width: 34px; height: 34px; border: 1px solid var(--border);
-    border-radius: var(--radius-md); background: var(--bg); color: var(--text);
-    font-size: 20px; cursor: pointer; display: flex; align-items: center;
-    justify-content: center; line-height: 1; user-select: none; transition: background .1s;
+  .slider-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
   }
-  .num-btn:hover { background: #e8e8e2; }
-  .num-btn:active { transform: scale(.95); }
 
-  .num-display { font-size: 16px; font-weight: 600; min-width: 68px; text-align: center; color: var(--text); }
-  .num-unit { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+  input[type=range] {
+    flex: 1; -webkit-appearance: none; appearance: none;
+    height: 4px; border-radius: 2px; background: #ddd; outline: none; cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 20px; height: 20px;
+    border-radius: 50%; background: var(--navy); cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--navy); cursor: pointer; border: none;
+  }
 
+  .slider-val {
+    font-size: 14px; font-weight: 600; color: var(--text);
+    min-width: 52px; text-align: right;
+  }
+
+  .text-input-wrap {
+    display: flex; align-items: center;
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+    background: var(--bg); overflow: hidden;
+  }
+  .text-input-wrap input[type=number] {
+    flex: 1; border: none; background: transparent;
+    padding: 10px 12px; font-size: 15px; font-weight: 500;
+    font-family: inherit; color: var(--text); outline: none;
+    -moz-appearance: textfield;
+  }
+  .text-input-wrap input[type=number]::-webkit-outer-spin-button,
+  .text-input-wrap input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .text-unit {
+    padding: 10px 12px; font-size: 13px; color: var(--text-hint);
+    background: var(--bg); border-left: 1px solid var(--border);
+  }
+
+  /* PREF CARDS */
   .pref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
-
   .pref-card {
     border: 1.5px solid var(--border); border-radius: var(--radius-lg);
-    padding: 1rem; cursor: pointer; background: var(--surface);
-    transition: border-color .15s, background .15s; text-align: left;
+    padding: 1.25rem 1rem; cursor: pointer; background: var(--surface);
+    transition: border-color .15s, background .15s; text-align: center;
   }
   .pref-card:hover { border-color: #b0daca; }
-  .pref-card.active { border-color: var(--green); background: var(--green-light); }
-  .pref-icon { font-size: 24px; margin-bottom: 8px; display: block; }
-  .pref-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; line-height: 1.3; }
-  .pref-sub { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
-  .pref-card.active .pref-title { color: var(--green-deeper); }
-  .pref-card.active .pref-sub { color: var(--green-dark); }
+  .pref-card.active { border-color: var(--navy); background: #f0f2f8; }
+  .pref-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+  .pref-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .pref-sub { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
 
   .cta-btn {
     width: 100%; padding: 15px; background: var(--navy); color: #fff;
-    border: none; border-radius: var(--radius-lg); font-size: 15px; font-weight: 600;
+    border: none; border-radius: var(--radius-lg); font-size: 15px; font-weight: 700;
     font-family: inherit; cursor: pointer; margin-bottom: 1.5rem; transition: opacity .15s;
+    letter-spacing: .01em;
   }
   .cta-btn:hover { opacity: .85; }
-  .cta-btn:active { transform: scale(.99); }
 
-  /* Result hero */
+  /* RESULT HERO */
   .result-hero {
     background: var(--navy); border-radius: var(--radius-lg);
     padding: 2rem 1.5rem 1.75rem; text-align: center; margin-bottom: 12px;
     position: relative; overflow: hidden;
   }
   .result-hero::before {
-    content: ''; position: absolute; top: -40px; right: -40px;
-    width: 160px; height: 160px; border-radius: 50%;
+    content: ''; position: absolute; top: -50px; right: -50px;
+    width: 180px; height: 180px; border-radius: 50%;
     background: rgba(255,255,255,.04);
   }
   .hero-size {
-    font-size: 80px; font-weight: 700; color: var(--gold);
+    font-size: 88px; font-weight: 700; color: var(--gold);
     line-height: 1; margin-bottom: 8px; letter-spacing: -2px;
   }
-  .hero-desc { font-size: 14px; color: rgba(255,255,255,.7); margin-bottom: 12px; }
+  .hero-desc { font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 12px; }
   .hero-pref-badge {
     display: inline-block; border: 1px solid var(--gold);
     color: var(--gold); font-size: 12px; font-weight: 600;
-    padding: 4px 14px; border-radius: 20px;
+    padding: 5px 16px; border-radius: 20px;
   }
 
-  /* Metric grid */
   .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
   .metric-box {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius-lg); padding: 14px 16px;
   }
   .metric-label { font-size: 12px; color: var(--text-hint); margin-bottom: 4px; }
-  .metric-val { font-size: 20px; font-weight: 700; color: var(--text); }
+  .metric-val { font-size: 22px; font-weight: 700; color: var(--text); }
 
-  /* Anjuran box */
   .anjuran-box {
     background: var(--gold-light); border: 1px solid var(--gold-border);
     border-radius: var(--radius-lg); padding: 16px; margin-bottom: 12px;
-    font-size: 14px; color: #5a4000; line-height: 1.6;
+    font-size: 14px; color: #5a4000; line-height: 1.7;
   }
   .anjuran-box strong { color: #3d2c00; }
 
-  /* Alternatif */
   .alt-card {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius-lg); padding: 16px; margin-bottom: 12px;
@@ -155,17 +166,16 @@
   .alt-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
   .alt-row {
     display: flex; align-items: center; gap: 12px;
-    padding: 8px 0; font-size: 13px;
+    padding: 10px 0; font-size: 13px;
   }
   .alt-row + .alt-row { border-top: 1px solid var(--border); }
   .alt-badge {
     background: var(--navy); color: #fff; font-size: 12px; font-weight: 700;
-    padding: 4px 10px; border-radius: 20px; white-space: nowrap; min-width: 56px; text-align: center;
+    padding: 5px 12px; border-radius: 20px; white-space: nowrap; min-width: 60px; text-align: center;
   }
-  .alt-desc { flex: 1; color: var(--text-muted); }
-  .alt-panjang { font-weight: 600; color: var(--text); white-space: nowrap; }
+  .alt-desc { flex: 1; color: var(--text-muted); line-height: 1.4; }
+  .alt-panjang { font-weight: 700; color: var(--text); white-space: nowrap; }
 
-  /* Hint */
   .hint-box {
     background: var(--green-light); border-radius: var(--radius-lg);
     padding: 14px 16px; font-size: 13px; color: var(--green-dark);
@@ -175,7 +185,7 @@
   .reset-btn {
     width: 100%; padding: 14px; background: var(--surface);
     border: 1px solid var(--border); border-radius: var(--radius-lg);
-    font-size: 14px; font-weight: 500; font-family: inherit;
+    font-size: 14px; font-weight: 600; font-family: inherit;
     color: var(--text-muted); cursor: pointer; transition: background .1s;
   }
   .reset-btn:hover { background: var(--bg); }
@@ -184,46 +194,56 @@
 </style>
 </head>
 <body>
-<div class="container">
 
-  <div class="header">
-    <span class="header-badge">Kawan Muslim</span>
-    <h1>Kalkulator Size Jubah & Gamis</h1>
-    <p>Temukan ukuran yang tepat untuk si kecil</p>
-  </div>
+<div class="topnav">
+  <h1>Kalkulator Size Jubah & Gamis</h1>
+  <p>Temukan ukuran yang tepat untuk si kecil</p>
+</div>
 
-  <p class="section-label">Data Anak</p>
+<div class="page">
+
   <div class="card">
-    <div class="input-row">
-      <span class="input-label">Tinggi badan anak</span>
-      <div class="num-input">
-        <button class="num-btn" onclick="change('tinggi',-1)">−</button>
-        <span class="num-display"><span id="tinggi-val">100</span> <span class="num-unit">cm</span></span>
-        <button class="num-btn" onclick="change('tinggi',1)">+</button>
+    <div class="section-label">Data Anak</div>
+
+    <div class="field">
+      <label class="field-label">Tinggi badan anak</label>
+      <div class="slider-row">
+        <input type="range" id="tinggi-slider" min="60" max="155" value="100" step="1" oninput="syncTinggi('slider',this.value)">
+        <span class="slider-val" id="tinggi-slider-val">100 cm</span>
+      </div>
+      <div class="text-input-wrap">
+        <input type="number" id="tinggi-input" min="60" max="155" value="100" oninput="syncTinggi('input',this.value)">
+        <span class="text-unit">cm</span>
       </div>
     </div>
-    <div class="input-row">
-      <span class="input-label">Berat badan anak</span>
-      <div class="num-input">
-        <button class="num-btn" onclick="change('berat',-1)">−</button>
-        <span class="num-display"><span id="berat-val">20</span> <span class="num-unit">kg</span></span>
-        <button class="num-btn" onclick="change('berat',1)">+</button>
+
+    <div class="field">
+      <label class="field-label">Berat badan anak</label>
+      <div class="slider-row">
+        <input type="range" id="berat-slider" min="5" max="60" value="20" step="1" oninput="syncBerat('slider',this.value)">
+        <span class="slider-val" id="berat-slider-val">20 kg</span>
+      </div>
+      <div class="text-input-wrap">
+        <input type="number" id="berat-input" min="5" max="60" value="20" oninput="syncBerat('input',this.value)">
+        <span class="text-unit">kg</span>
       </div>
     </div>
   </div>
 
-  <p class="section-label">Preferensi Panjang</p>
-  <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">Pilih gaya jubah yang diinginkan:</p>
-  <div class="pref-grid">
-    <div class="pref-card" id="pref-atas" onclick="setPref('atas')" role="button" tabindex="0">
-      <span class="pref-icon">🦶</span>
-      <div class="pref-title">Di atas mata kaki</div>
-      <div class="pref-sub">Lebih ringkas, nyaman untuk aktivitas</div>
-    </div>
-    <div class="pref-card" id="pref-bawah" onclick="setPref('bawah')" role="button" tabindex="0">
-      <span class="pref-icon">👇</span>
-      <div class="pref-title">Di bawah mata kaki</div>
-      <div class="pref-sub">Panjang penuh, lebih syar'i & formal</div>
+  <div class="card">
+    <div class="section-label">Preferensi Panjang</div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Pilih gaya jubah yang diinginkan:</p>
+    <div class="pref-grid">
+      <div class="pref-card" id="pref-atas" onclick="setPref('atas')" role="button" tabindex="0">
+        <span class="pref-icon">🦶</span>
+        <div class="pref-title">Di atas mata kaki</div>
+        <div class="pref-sub">Lebih ringkas, nyaman untuk aktivitas</div>
+      </div>
+      <div class="pref-card" id="pref-bawah" onclick="setPref('bawah')" role="button" tabindex="0">
+        <span class="pref-icon">👇</span>
+        <div class="pref-title">Di bawah mata kaki</div>
+        <div class="pref-sub">Panjang penuh, lebih syar'i & formal</div>
+      </div>
     </div>
   </div>
 
@@ -235,25 +255,31 @@
 
 <script>
 const sizes = [
-  {size:2,  panjang:72,  lebar:34, tangan:27, lingkar:88,  beratMin:0,  beratMax:13, tinggiMin:60,  tinggiMax:92},
-  {size:4,  panjang:78,  lebar:38, tangan:31, lingkar:98,  beratMin:14, beratMax:20, tinggiMin:93,  tinggiMax:98},
-  {size:6,  panjang:84,  lebar:42, tangan:34, lingkar:104, beratMin:21, beratMax:25, tinggiMin:99,  tinggiMax:104},
-  {size:8,  panjang:90,  lebar:46, tangan:36, lingkar:110, beratMin:26, beratMax:30, tinggiMin:105, tinggiMax:110},
-  {size:10, panjang:100, lebar:48, tangan:39, lingkar:116, beratMin:30, beratMax:35, tinggiMin:111, tinggiMax:120},
-  {size:12, panjang:108, lebar:50, tangan:40, lingkar:124, beratMin:35, beratMax:40, tinggiMin:121, tinggiMax:128},
-  {size:14, panjang:115, lebar:52, tangan:42, lingkar:127, beratMin:40, beratMax:45, tinggiMin:129, tinggiMax:155},
+  {size:2,  panjang:72,  lebar:34, beratMin:0,  beratMax:13, tinggiMin:60,  tinggiMax:92},
+  {size:4,  panjang:78,  lebar:38, beratMin:14, beratMax:20, tinggiMin:93,  tinggiMax:98},
+  {size:6,  panjang:84,  lebar:42, beratMin:21, beratMax:25, tinggiMin:99,  tinggiMax:104},
+  {size:8,  panjang:90,  lebar:46, beratMin:26, beratMax:30, tinggiMin:105, tinggiMax:110},
+  {size:10, panjang:100, lebar:48, beratMin:30, beratMax:35, tinggiMin:111, tinggiMax:120},
+  {size:12, panjang:108, lebar:50, beratMin:35, beratMax:40, tinggiMin:121, tinggiMax:128},
+  {size:14, panjang:115, lebar:52, beratMin:40, beratMax:45, tinggiMin:129, tinggiMax:155},
 ];
 
 let tinggi = 100, berat = 20, pref = null;
 
-function change(field, delta) {
-  if (field === 'tinggi') {
-    tinggi = Math.min(155, Math.max(60, tinggi + delta));
-    document.getElementById('tinggi-val').textContent = tinggi;
-  } else {
-    berat = Math.min(60, Math.max(5, berat + delta));
-    document.getElementById('berat-val').textContent = berat;
-  }
+function syncTinggi(src, val) {
+  val = Math.min(155, Math.max(60, parseInt(val) || 60));
+  tinggi = val;
+  if (src !== 'slider') { document.getElementById('tinggi-slider').value = val; }
+  if (src !== 'input')  { document.getElementById('tinggi-input').value = val; }
+  document.getElementById('tinggi-slider-val').textContent = val + ' cm';
+}
+
+function syncBerat(src, val) {
+  val = Math.min(60, Math.max(5, parseInt(val) || 5));
+  berat = val;
+  if (src !== 'slider') { document.getElementById('berat-slider').value = val; }
+  if (src !== 'input')  { document.getElementById('berat-input').value = val; }
+  document.getElementById('berat-slider-val').textContent = val + ' kg';
 }
 
 function setPref(p) {
@@ -263,33 +289,29 @@ function setPref(p) {
 }
 
 function findByTinggi(t) { return sizes.find(s => t >= s.tinggiMin && t <= s.tinggiMax); }
-function findByBerat(b)  { return sizes.find(s => b >= s.beratMin && b <= s.beratMax); }
+function findByBerat(b)  { return sizes.find(s => b >= s.beratMin  && b <= s.beratMax);  }
 
 function getPanjang(s) {
   if (!pref) return s.panjang;
   return pref === 'bawah' ? s.panjang + 4 : s.panjang - 2;
 }
 
-function getAnjuran(s, prefLabel) {
-  const posisi = pref === 'bawah'
-    ? 'jubah akan menutup hingga bawah mata kaki — tampilan lebih syar\'i dan formal'
-    : pref === 'atas'
-    ? 'jubah akan berakhir di atas mata kaki — lebih ringkas dan nyaman bergerak'
-    : 'panjang jubah standar sesuai tabel ukuran';
-
-  const panjangCm = getPanjang(s);
-  const perkiraPosisi = pref === 'bawah' ? '±5 cm di bawah mata kaki' : pref === 'atas' ? '±7 cm di atas mata kaki' : 'posisi standar';
-
-  return `<strong>Size ${s.size}</strong> cocok untuk ${pref === 'bawah' ? 'jubah panjang penuh' : pref === 'atas' ? 'jubah aktif harian' : 'jubah standar'}. Posisi jubah sekitar <strong>${perkiraPosisi}</strong> dari lantai. Kalau anak sedang dalam masa tumbuh cepat, pertimbangkan 1 size di atas agar lebih tahan lama.`;
+function getAnjuran(s) {
+  const posisi = pref === 'bawah' ? '±5 cm di bawah mata kaki'
+               : pref === 'atas'  ? '±7 cm di atas mata kaki'
+               : 'posisi standar';
+  const konteks = pref === 'bawah' ? 'jubah panjang penuh'
+                : pref === 'atas'  ? 'jubah aktif harian'
+                : 'jubah standar';
+  return `<strong>Size ${s.size}</strong> cocok untuk ${konteks}. Posisi jubah sekitar <strong>${posisi}</strong> dari lantai. Kalau anak sedang dalam masa tumbuh cepat, pertimbangkan 1 size di atas agar lebih tahan lama.`;
 }
 
 function hitung() {
   const byT = findByTinggi(tinggi);
   const byB = findByBerat(berat);
-
   const section = document.getElementById('result-section');
   section.style.display = 'block';
-  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
 
   if (!byT && !byB) {
     section.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--text-hint);font-size:14px;">Data di luar kisaran tabel ukuran kami.</div>`;
@@ -300,69 +322,35 @@ function hitung() {
   const idx = sizes.indexOf(primary);
   const prefLabel = pref === 'bawah' ? 'Di bawah mata kaki' : pref === 'atas' ? 'Di atas mata kaki' : null;
   const panjangDisplay = getPanjang(primary);
-
-  const heroPref = prefLabel
-    ? `<div class="hero-pref-badge">${prefLabel}</div>`
-    : '';
-
-  // Alternatif: size di bawah & atas
   const altBawah = idx > 0 ? sizes[idx - 1] : null;
   const altAtas  = idx < sizes.length - 1 ? sizes[idx + 1] : null;
 
   let altRows = '';
-  if (altBawah) altRows += `
-    <div class="alt-row">
-      <span class="alt-badge">Size ${altBawah.size}</span>
-      <span class="alt-desc">Lebih kecil — jika anak lebih langsing/pendek</span>
-      <span class="alt-panjang">${getPanjang(altBawah)} cm</span>
-    </div>`;
-  if (altAtas) altRows += `
-    <div class="alt-row">
-      <span class="alt-badge">Size ${altAtas.size}</span>
-      <span class="alt-desc">Lebih besar — jika anak tumbuh cepat</span>
-      <span class="alt-panjang">${getPanjang(altAtas)} cm</span>
-    </div>`;
+  if (altBawah) altRows += `<div class="alt-row"><span class="alt-badge">Size ${altBawah.size}</span><span class="alt-desc">Lebih kecil — jika anak lebih langsing/pendek</span><span class="alt-panjang">${getPanjang(altBawah)} cm</span></div>`;
+  if (altAtas)  altRows += `<div class="alt-row"><span class="alt-badge">Size ${altAtas.size}</span><span class="alt-desc">Lebih besar — jika anak tumbuh cepat</span><span class="alt-panjang">${getPanjang(altAtas)} cm</span></div>`;
 
   section.innerHTML = `
     <div class="result-hero">
       <div class="hero-size">${primary.size}</div>
       <div class="hero-desc">Tinggi ${tinggi} cm · Berat ${berat} kg</div>
-      ${heroPref}
+      ${prefLabel ? `<div class="hero-pref-badge">${prefLabel}</div>` : ''}
     </div>
-
     <div class="metric-grid">
-      <div class="metric-box">
-        <div class="metric-label">Panjang jubah</div>
-        <div class="metric-val">${panjangDisplay} cm</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-label">Lebar dada</div>
-        <div class="metric-val">${primary.lebar} cm</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-label">Kisaran berat</div>
-        <div class="metric-val">${primary.beratMin}–${primary.beratMax} kg</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-label">Kisaran tinggi</div>
-        <div class="metric-val">${primary.tinggiMin}–${primary.tinggiMax} cm</div>
-      </div>
+      <div class="metric-box"><div class="metric-label">Panjang jubah</div><div class="metric-val">${panjangDisplay} cm</div></div>
+      <div class="metric-box"><div class="metric-label">Lebar dada</div><div class="metric-val">${primary.lebar} cm</div></div>
+      <div class="metric-box"><div class="metric-label">Kisaran berat</div><div class="metric-val">${primary.beratMin}–${primary.beratMax} kg</div></div>
+      <div class="metric-box"><div class="metric-label">Kisaran tinggi</div><div class="metric-val">${primary.tinggiMin}–${primary.tinggiMax} cm</div></div>
     </div>
-
-    <div class="anjuran-box">${getAnjuran(primary, prefLabel)}</div>
-
+    <div class="anjuran-box">${getAnjuran(primary)}</div>
     ${altRows ? `<div class="alt-card"><div class="alt-title">Pilihan alternatif</div>${altRows}</div>` : ''}
-
     <div class="hint-box">Ukuran ini berdasarkan data tinggi & berat. Untuk hasil terbaik, ukur langsung lingkar dada anak dan bandingkan dengan tabel di atas.</div>
-
     <button class="reset-btn" onclick="reset()">Hitung ulang</button>
   `;
 }
 
 function reset() {
   tinggi = 100; berat = 20; pref = null;
-  document.getElementById('tinggi-val').textContent = 100;
-  document.getElementById('berat-val').textContent = 20;
+  syncTinggi('both', 100); syncBerat('both', 20);
   document.getElementById('pref-atas').classList.remove('active');
   document.getElementById('pref-bawah').classList.remove('active');
   document.getElementById('result-section').style.display = 'none';
